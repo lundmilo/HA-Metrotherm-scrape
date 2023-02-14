@@ -1,0 +1,112 @@
+- name: myupway Scraper
+  resource: https://myupway.com/System/xxxxx/Status/ServiceInfo
+  log_response: false
+  scan_interval: 60
+  form_submit:
+    submit_once: false
+    resource: https://myupway.com/LogIn
+    input:
+      email: !secret myupway_username
+      password: !secret myupway_password
+  sensor:
+    - unique_id: vp_outdoor_temperature
+      name: Outdoor temperature
+      device_class: temperature
+      unit_of_measurement: °C
+      select: ".ID40004"
+      value_template: "{{ value.replace('°C', '') }}"
+    - unique_id: vp_average_temperature
+      name: Average outdoor temperatur
+      device_class: temperature
+      unit_of_measurement: °C
+      select: ".ID40067"
+      value_template: "{{ value.replace('°C', '') }}"
+    - unique_id: vp_hotwater_filling
+      name: Hotwater filling
+      device_class: temperature
+      icon: mdi:water-thermometer-outline
+      unit_of_measurement: °C
+      select: ".ID40014"
+      value_template: "{{ value.replace('°C', '') }}"
+    - unique_id: vp_hotwater_top
+      name: Hotwater Top
+      device_class: temperature
+      icon: mdi:water-thermometer-outline
+      unit_of_measurement: °C
+      select: ".ID40013"
+      value_template: "{{ value.replace('°C', '') }}"
+    - unique_id: vp_gradminutter
+      name: GM
+      unit_of_measurement: ""
+      select: ".ID43005"
+      value_template: "{{ value }}"
+    - unique_id: vp_calc_temperature
+      name: Calculated heating temperature
+      device_class: temperature
+      unit_of_measurement: °C
+      select: ".ID43009"
+      value_template: "{{ value.replace('°C', '') }}"
+    - unique_id: vp_heating_temperature
+      name: Actual heating temperature
+      device_class: temperature
+      unit_of_measurement: °C
+      select: ".ID40008"
+      value_template: "{{ value.replace('°C', '') }}"
+    - unique_id: vp_return_temperature
+      name: Actual return temperature
+      device_class: temperature
+      unit_of_measurement: °C
+      select: ".ID40012"
+      value_template: "{{ value.replace('°C', '') }}"
+    - unique_id: vp_auxheat_time
+      name: Auxiliary heater runtime
+      icon: mdi:clock-outline
+      select: ".ID43081"
+      value_template: "{{ value }}"
+    - unique_id: vp_auxheat_power
+      name: Auxiliary heater power
+      device_class: power
+      unit_of_measurement: ""
+      select: ".ID43084"
+      value_template: "{{ value }}"
+- name: myupway Scraper
+  resource: https://myupway.com/System/xxxxx/Status/ServiceInfo/1
+  log_response: false
+  scan_interval: 60
+  form_submit:
+    submit_once: false
+    resource: https://myupway.com/LogIn
+    input:
+      email: !secret myupway_username
+      password: !secret myupway_password
+  sensor:
+    - unique_id: vp_compressor_runningtime
+      name: Compressor running time - Heating
+      icon: mdi:clock-outline
+      unit_of_measurement: ""
+      select: ".ID44071"
+      value_template: "{{ value }}"
+    - unique_id: vp_compressor_runningtime_water
+      name: Compressoe running time - Hot water
+      icon: mdi:clock-outline
+      unit_of_measurement: ""
+      select: ".ID44073"
+      value_template: "{{ value }}"
+    - unique_id: vp_kompressor_start
+      name: Number of ompressor starts
+      icon: mdi:counter
+      unit_of_measurement: ""
+      select: ".ID44069"
+      value_template: "{{ value }}"
+    - unique_id: vp_actual_komressor_freq
+      name: Actual compressor frequency
+      device_class: frequency
+      unit_of_measurement: ""
+      select: ".ID44701"
+      value_template: "{{ value }}"
+    - unique_id: vp_req_kompressor_freq
+      name: Requested compressor frequency
+      device_class: frequency
+      unit_of_measurement: ""
+      select: ".ID40782"
+      value_template: "{{ value }}"
