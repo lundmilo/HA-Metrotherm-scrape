@@ -65,7 +65,6 @@
       value_template: "{{ value }}"
     - unique_id: vp_auxheat_power
       name: Auxiliary heater power
-      device_class: power
       unit_of_measurement: ""
       select: ".ID43084"
       value_template: "{{ value }}"
@@ -100,13 +99,11 @@
       value_template: "{{ value }}"
     - unique_id: vp_actual_komressor_freq
       name: Actual compressor frequency
-      device_class: frequency
       unit_of_measurement: ""
       select: ".ID44701"
       value_template: "{{ value }}"
     - unique_id: vp_req_kompressor_freq
       name: Requested compressor frequency
-      device_class: frequency
       unit_of_measurement: ""
       select: ".ID40782"
       value_template: "{{ value }}"
