@@ -23,13 +23,13 @@ Compressor frequency
 Installation:
 
 
-  1. Install Multiscrape via HACS
+1. Install Multiscrape via HACS
 
 
-  2.Place the metrotherm.yaml file in the config directory of your Home Assistant instance and insert the follwing line in configuration.yaml
+2. Place the metrotherm.yaml file in the config directory of your Home Assistant instance and insert the follwing line in configuration.yaml
 
 
-    multiscrape: !include metrotherm.yaml
+   multiscrape: !include metrotherm.yaml
 
 
-  3. Restart Home Assistant
+3. Restart Home Assistant
